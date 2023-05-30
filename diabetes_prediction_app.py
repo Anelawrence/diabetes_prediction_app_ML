@@ -1,6 +1,7 @@
 import numpy as np
 import pickle
 import streamlit as st
+from PIL import Image
 
 
 # loading the saved model
@@ -8,6 +9,9 @@ loaded_model = pickle.load(open('trained_model.sav', 'rb'))
 
 # loading the scaler object
 scaler = pickle.load(open('scaler_object.sav', 'rb')) # C:/Users/LAWRENCE/Desktop/SGA_1.3/PROJECTS_Folder/
+
+# loading an image
+img = Image.open("diabetes_diagnose.jpg")
 
 
 def diabetes_prediction(input_values):
@@ -27,9 +31,10 @@ def main():
    
     # giving a title
     st.title('Diabetes Prediction Web App')
+    st.image(img)
     st.text_input('Enter your Name:', key='name')
     
-
+    
     #Getting inpit data from user
     Pregnancies = st.number_input('Number of Pregnancies:')
     Glucose = st.number_input('Glucose Level:')
